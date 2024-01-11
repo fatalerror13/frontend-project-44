@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
+import showMenu from '../cli.js';
+
 const init = () => {
-    console.log('Welcome to the Brain Games!');
-}
+  showMenu();
+};
 
 init();
