@@ -56,6 +56,39 @@ export const game = {
       condition,
     };
   },
+
+  progression: () => {
+    const length = getRandomInt(6, 10);
+    const startNum = getRandomInt(1, 20);
+    const position = getRandomInt(2, length - 1);
+    const addition = getRandomInt(1, 10);
+
+    let operationResult = startNum;
+    let tmpSum = startNum;
+    let question = '';
+
+    const result = 1;
+
+    for (let i = 1; i < length; i += 1) {
+      tmpSum += addition;
+
+      if (i === position) {
+        question += '.. ';
+        operationResult = tmpSum;
+      } else {
+        question += tmpSum;
+        question += ' ';
+      }
+    }
+    const condition = (answer) => Number.parseInt(answer, 10) === operationResult;
+
+    return {
+      questionText: 'What number is missing in the progression?',
+      questionParam: question,
+      correctAnswer: result,
+      condition,
+    };
+  },
 };
 
 export const makeGame = (type) => {
