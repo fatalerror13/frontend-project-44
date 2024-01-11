@@ -10,6 +10,10 @@ brain-even:
 brain-calc:
 	node bin/brain-calc.js
 
+.PHONY: brain-gcd
+brain-gcd:
+	node bin/brain-gcd.js
+
 .PHONY: publish
 publish:
 	npm publish --dry-run

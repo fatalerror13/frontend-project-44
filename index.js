@@ -34,6 +34,28 @@ export const game = {
       condition,
     };
   },
+
+  gcd: () => {
+    const firstNumber = getRandomInt(1, 10);
+    const secondNumber = getRandomInt(1, 10);
+
+    let result = 1;
+
+    for (let i = secondNumber; i > 0; i -= 1) {
+      if (secondNumber % i === 0 && firstNumber % i === 0) {
+        result = i;
+        break;
+      }
+    }
+    const condition = (answer) => Number.parseInt(answer, 10) === result;
+
+    return {
+      questionText: 'Find the greatest common divisor of given numbers.',
+      questionParam: `${firstNumber} ${secondNumber}`,
+      correctAnswer: result,
+      condition,
+    };
+  },
 };
 
 export const makeGame = (type) => {
