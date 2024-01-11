@@ -2,6 +2,7 @@ import readline from 'readline-sync';
 import { ROUNDS } from './utils/constants.js';
 import getRandomInt from './utils/getRandomInt.js';
 import getOperationResult from './utils/getOperationResult.js';
+import isPrime from './utils/isPrime.js';
 
 export const game = {
   calc: () => {
@@ -83,6 +84,21 @@ export const game = {
     return {
       questionText: 'What number is missing in the progression?',
       questionParam: question,
+      correctAnswer: operationResult,
+      condition,
+    };
+  },
+
+  prime: () => {
+    const num = getRandomInt(1, 100);
+    const result = isPrime(num);
+    const operationResult = result ? 'yes' : 'no';
+
+    const condition = (answer) => answer === operationResult;
+
+    return {
+      questionText: 'Answer "yes" if given number is prime. Otherwise answer "no".',
+      questionParam: num,
       correctAnswer: operationResult,
       condition,
     };
