@@ -118,7 +118,7 @@ export const makeGame = (type) => {
     } = game[type]();
 
     console.log(questionText);
-    console.log('Question: ', `${questionParam}`);
+    console.log(`Question: ${questionParam}`);
     const answer = readline.question('Your answer: : ');
 
     if (condition(answer)) {
