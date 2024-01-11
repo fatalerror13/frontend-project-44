@@ -67,8 +67,6 @@ export const game = {
     let tmpSum = startNum;
     let question = '';
 
-    const result = 1;
-
     for (let i = 1; i < length; i += 1) {
       tmpSum += addition;
 
@@ -85,7 +83,7 @@ export const game = {
     return {
       questionText: 'What number is missing in the progression?',
       questionParam: question,
-      correctAnswer: result,
+      correctAnswer: operationResult,
       condition,
     };
   },
