@@ -3,8 +3,9 @@
 import readline from 'readline-sync';
 import getRandomInt from '../utils/getRandomInt.js';
 import { ROUNDS } from '../utils/constants.js';
+import getOperationResult from '../utils/getOperationResult.js';
 
-const brainEven = () => {
+const brainCalc = () => {
   console.log('Welcome to the Brain Games!');
   const name = readline.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
@@ -12,13 +13,17 @@ const brainEven = () => {
   let counter = 1;
 
   while (counter <= ROUNDS) {
-    const number = getRandomInt();
-    const isEven = number % 2 === 0;
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
-    console.log('Question: ', number);
+    const firstNumber = getRandomInt(1, 10);
+    const secondNumber = getRandomInt(1, 10);
+    const operationIndex = getRandomInt(0, 2);
+    const operations = ['+', '-', '*'];
+    const operation = operations[operationIndex];
+
+    console.log('What is the result of the expression?');
+    console.log('Question: ', `${firstNumber} ${operation} ${secondNumber}`);
     const answer = readline.question('Your answer: : ');
-    const correctAnswer = answer === 'yes' ? 'no' : 'yes';
-    const condition = (isEven && answer === 'yes') || (!isEven && answer === 'no');
+    const correctAnswer = getOperationResult(firstNumber, secondNumber, operation);
+    const condition = Number.parseInt(answer, 10) === correctAnswer;
 
     if (condition) {
       console.log('Correct!');
@@ -33,4 +38,4 @@ const brainEven = () => {
   console.log(`Congratulations, ${name}!`);
 };
 
-brainEven();
+brainCalc();
